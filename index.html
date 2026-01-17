@@ -72,7 +72,6 @@ body {
             background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath stroke='%23FFD700' stroke-width='2' fill='none' d='M0,2 Q2.5,4 5,2 T10,2 T15,2 T20,2'/%3E%3C/svg%3E") repeat-x;
             margin-top: 2px;
         }
-
         /* --- Hero Section --- */
         .hero-section {
             background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(15,15,15,1) 100%),
@@ -84,13 +83,28 @@ body {
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px 80px 20px; /* Added top padding for mobile navbar clearance */
+            overflow: hidden; /* Crucial: Cuts off anything sticking out */
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            /* Better scaling: Starts smaller (2.5rem) and grows with viewport width (8vw) */
+            font-size: clamp(2.5rem, 8vw, 5rem);
             line-height: 1.1;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            
+            /* Mobile Safety: Break long words if they don't fit */
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+            max-width: 100%;
+        }
+
+        /* Extra fix for very narrow phones (iPhone SE, Foldables) */
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: 2.0rem; /* Force smaller size on tiny screens */
+            }
         }
 
         /* --- Buttons --- */
@@ -257,14 +271,14 @@ body {
     </nav>
 
     <section id="home" class="hero-section">
-        <div class="container">
+        <div class="container px-3"> 
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-12">
                     <h5 class="text-neon-yellow text-uppercase fw-bold mb-3 ls-2">Sargodha's Night Life</h5>
                     <h1 class="hero-title text-white mb-4">CRAVING THE<br><span class="text-neon-white">EXTRAORDINARY?</span></h1>
-                    <p class="lead text-light opacity-75 mb-5">Burgers, Wraps & Desi Fusion. We stay open when the rest of the city sleeps.</p>
+                    <p class="lead text-light opacity-75 mb-5 mx-auto" style="max-width: 600px;">Burgers, Wraps & Desi Fusion. We stay open when the rest of the city sleeps.</p>
                     
-                    <div class="d-flex justify-content-center gap-3 hero-btns">
+                    <div class="d-flex justify-content-center gap-3 hero-btns flex-wrap">
                         <a href="https://foodpanda.pk" target="_blank" class="btn btn-foodpanda rounded-pill shadow-lg">
                             <i class="fas fa-bicycle me-2"></i> Order Delivery
                         </a>
@@ -592,4 +606,5 @@ body {
     }
 </script>
 </body>
+
 </html>
