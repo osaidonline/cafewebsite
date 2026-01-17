@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Logo here | Sargodha</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Theme Colors */
+            --neon-purple: #9D00FF; 
+            --neon-yellow: #FFD700;
+            --bg-dark: #0f0f0f;
+            --card-bg: #181818;
+            --text-main: #ffffff;
+        }
+        /* Prevent text selection */
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- Typography & Utilities --- */
+        h1, h2, h3, h4 { font-weight: 800; }
+        .text-neon-yellow { color: var(--neon-yellow) !important; }
+        .text-neon-purple { color: var(--neon-purple) !important; }
+        
+        .section-header {
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--neon-yellow);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background-color: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(157, 0, 255, 0.3);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .squiggly-line {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath stroke='%23FFD700' stroke-width='2' fill='none' d='M0,2 Q2.5,4 5,2 T10,2 T15,2 T20,2'/%3E%3C/svg%3E") repeat-x;
+            margin-top: 2px;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(15,15,15,1) 100%),
+                        url('https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- Buttons --- */
+        .btn-custom-outline {
+            border: 2px solid var(--neon-yellow);
+            color: var(--neon-yellow);
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom-outline:hover {
+            background-color: var(--neon-yellow);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-yellow);
+        }
+
+        .btn-foodpanda {
+            background-color: #D70F64;
+            color: white;
+            font-weight: 700;
+            padding: 12px 30px;
+            border: none;
+        }
+        .btn-foodpanda:hover {
+            background-color: #b00c52;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- Cards & Boxes --- */
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 30px 20px;
+            height: 100%;
+            transition: 0.3s;
+        }
+        .info-card:hover {
+            border-color: var(--neon-purple);
+            transform: translateY(-5px);
+        }
+
+        .menu-card {
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .menu-card:active { transform: scale(0.98); }
+
+        .feature-box {
+            text-align: center;
+            padding: 20px;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+            background: rgba(157, 0, 255, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* --- Gallery --- */
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            filter: grayscale(30%);
+            transition: 0.4s;
+            border: 1px solid #333;
+        }
+        .gallery-img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+            border-color: var(--neon-yellow);
+        }
+
+        /* --- Testimonials --- */
+        .testimonial-card {
+            background: #1a1a1a;
+            border-left: 4px solid var(--neon-yellow);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            height: 100%;
+        }
+
+        /* --- FAQ Accordion --- */
+        .accordion-item {
+            background-color: transparent;
+            border: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        .accordion-button {
+            background-color: #1a1a1a;
+            color: white;
+            font-weight: 600;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: var(--neon-purple);
+            color: white;
+        }
+        .accordion-button::after {
+            filter: invert(1);
+        }
+        .accordion-body {
+            color: #ccc;
+            background-color: #111;
+        }
+
+        /* --- Spacing --- */
+        .section-padding { padding: 80px 0; }
+        @media (max-width: 768px) {
+            .section-padding { padding: 50px 0; }
+            .hero-btns { flex-direction: column; width: 100%; }
+            .hero-btns .btn { width: 100%; }
+        }
+
+        .status-bar {
+            background: #1a1a1a;
+            border-bottom: 1px solid #333;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="status-bar py-2 text-center text-uppercase fw-bold text-success">
+        <div class="container">
+            <span class="mx-2"><i class="fas fa-check-circle me-1"></i> Dine-in</span>
+            <span class="mx-2"><i class="fas fa-check-circle me-1"></i> Takeout</span>
+            <span class="mx-2"><i class="fas fa-check-circle me-1"></i> Delivery</span>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="#">
+                Your Logo here
+                <span class="squiggly-line"></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="fas fa-bars fa-lg text-neon-yellow"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav text-center mt-3 mt-lg-0 gap-3">
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="#about">Why Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="#reviews">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h5 class="text-neon-yellow text-uppercase fw-bold mb-3 ls-2">Sargodha's Night Life</h5>
+                    <h1 class="hero-title text-white mb-4">CRAVING THE<br><span class="text-neon-white">EXTRAORDINARY?</span></h1>
+                    <p class="lead text-light opacity-75 mb-5">Burgers, Wraps & Desi Fusion. We stay open when the rest of the city sleeps.</p>
+                    
+                    <div class="d-flex justify-content-center gap-3 hero-btns">
+                        <a href="https://foodpanda.pk" target="_blank" class="btn btn-foodpanda rounded-pill shadow-lg">
+                            <i class="fas fa-bicycle me-2"></i> Order Delivery
+                        </a>
+                        <a href="tel:+923228924166" class="btn btn-custom-outline rounded-pill">
+                            <i class="fas fa-phone-alt me-2"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding pb-0">
+        <div class="container">
+            <div class="row g-4">
+                
+                <div class="col-md-4">
+                    <div class="info-card text-center d-flex flex-column justify-content-center h-100">
+                        <i class="fas fa-map-pin fs-2 text-neon-purple mb-3"></i>
+                        <h5 class="text-white fw-bold text-uppercase ls-1 mb-2">Location</h5>
+                        <p class=" small mb-1 text-uppercase">National Park Area</p>
+                        <p class="text-white fw-bold fs-4 mb-0">Sargodha, Pakistan</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card text-center d-flex flex-column justify-content-center h-100">
+                        <i class="fas fa-clock fs-2 text-neon-yellow mb-3"></i>
+                        <h5 class="text-white fw-bold text-uppercase ls-1 mb-2">Hours</h5>
+                        <p class="text-success fw-bold small mb-1 text-uppercase">Open Now</p>
+                        <p class="text-white fw-bold fs-4 mb-0">Closes 1:45 AM</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card text-center d-flex flex-column justify-content-center h-100">
+                        <i class="fas fa-headset fs-2 text-neon-purple mb-3"></i>
+                        <h5 class="text-white fw-bold text-uppercase ls-1 mb-2">Contact</h5>
+                        <p class=" small mb-1 text-uppercase">Order & Queries</p>
+                        <a href="tel:+923288495587" class="text-neon-yellow text-decoration-none fw-bold fs-4">+92 328 8495587</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-header text-white display-5">THE VIBE</h2>
+                <p>More than just fast food.</p>
+            </div>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-moon"></i></div>
+                        <h5 class="fw-bold">Late Night</h5>
+                        <p class="small">We serve hot food till 1:45 AM every single night.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-drumstick-bite"></i></div>
+                        <h5 class="fw-bold">100% Halal</h5>
+                        <p class="small">Fresh, locally sourced Halal meat prepared daily.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-fire"></i></div>
+                        <h5 class="fw-bold">Fresh Grill</h5>
+                        <p class="small">Charcoal grilled perfection for that smoky flavor.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-motorcycle"></i></div>
+                        <h5 class="fw-bold">Fast Delivery</h5>
+                        <p class="small">Hot food at your doorstep within 30-45 minutes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section-padding bg-black">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-neon-purple fw-bold text-uppercase">What's Hot</h6>
+                <h2 class="section-header text-white display-5">FAN FAVORITES</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="menu-card p-3 d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Burger" class="menu-img flex-shrink-0" style="width:90px;height:90px;border-radius:8px;object-fit:cover;">
+                        <div class="ms-3 w-100">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white fw-bold mb-1">Zinger Burger</h5>
+                                <span class="text-neon-yellow fw-bold">Rs. 450</span>
+                            </div>
+                            <small>Crispy chicken fillet with secret spicy sauce.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="menu-card p-3 d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Roll" class="menu-img flex-shrink-0" style="width:90px;height:90px;border-radius:8px;object-fit:cover;">
+                        <div class="ms-3 w-100">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white fw-bold mb-1">Malai Boti Roll</h5>
+                                <span class="text-neon-yellow fw-bold">Rs. 320</span>
+                            </div>
+                            <small>Creamy charcoal chicken in a paratha.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="menu-card p-3 d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Fries" class="menu-img flex-shrink-0" style="width:90px;height:90px;border-radius:8px;object-fit:cover;">
+                        <div class="ms-3 w-100">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white fw-bold mb-1">Loaded Fries</h5>
+                                <span class="text-neon-yellow fw-bold">Rs. 500</span>
+                            </div>
+                            <small>Topped with cheese, jalapenos & chicken.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="menu-card p-3 d-flex align-items-center">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="BBQ" class="menu-img flex-shrink-0" style="width:90px;height:90px;border-radius:8px;object-fit:cover;">
+                        <div class="ms-3 w-100">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white fw-bold mb-1">BBQ Platter</h5>
+                                <span class="text-neon-yellow fw-bold">Rs. 1400</span>
+                            </div>
+                            <small>Mix of Seekh Kabab, Tikka & Wings.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="https://foodpanda.pk" class="btn btn-outline-light px-5 py-2 rounded-pill">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-white mb-4 fw-bold">VISUAL FEAST</h2>
+            <div class="row g-3">
+                <div class="col-md-4 col-6">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="gallery-img" alt="Pizza">
+                </div>
+                <div class="col-md-4 col-6">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="gallery-img" alt="Burger">
+                </div>
+                <div class="col-md-4 col-12">
+                    <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="gallery-img" alt="Grill" style="object-position: center;">
+                </div>
+                <div class="col-md-6 col-12">
+                    <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Desi Food">
+                </div>
+                <div class="col-md-6 col-12">
+                    <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Fried Chicken">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section-padding bg-black">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-neon-yellow">TESTIMONIALS</h6>
+                <h2 class="text-white display-6 fw-bold">SARGODHA LOVES US</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-light fst-italic">"Best Zinger burger in National Park area. The sauce is unique and the fries are always crispy. Highly recommended!"</p>
+                        <h6 class="text-neon-yellow fw-bold mt-3">- Ahmed K.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-light fst-italic">"Finally a good place that is open late night. Saved my hunger at 1 AM. Packaging was great too."</p>
+                        <h6 class="text-neon-yellow fw-bold mt-3">- Hamza R.</h6>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-light fst-italic">"Great vibes for dine-in. The neon lighting is cool and the BBQ platter is worth every rupee."</p>
+                        <h6 class="text-neon-yellow fw-bold mt-3">- Fatima Z.</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-white text-center mb-5 fw-bold">FREQUENTLY ASKED</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    Do you offer Home Delivery?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! We deliver through Foodpanda and our own riders. Delivery is available until 1:45 AM.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Is there parking available?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we have ample parking space available right outside the restaurant in National Park area.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Do you take reservations for birthdays?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Absolutely! Call us at +92 322 8924166 to book a table for your event. We can also arrange decorations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" style="background: var(--neon-purple);">
+        <div class="container text-center">
+            <h2 class="fw-bold text-white mb-3">GET 10% OFF YOUR FIRST ORDER</h2>
+            <p class="text-white mb-4">Join our SMS list for exclusive weekly deals and secret menu items.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6 d-flex gap-2">
+                    <input type="text" class="form-control form-control-lg border-0" placeholder="Enter your mobile number">
+                    <button class="btn btn-dark btn-lg fw-bold">JOIN</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5 border-top border-secondary bg-dark text-center">
+        <div class="container">
+            <h3 class="text-white fw-bold ls-2 mb-3">Your Logo here</h3>
+            <p class=" mb-4">The taste that keeps you awake.</p>
+            <div class="d-flex justify-content-center gap-4 mb-4">
+                <a href="#" class="text-secondary hover-white"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="#" class="text-secondary hover-white"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://wa.me/923228924166" class="text-secondary hover-white"><i class="fab fa-whatsapp fa-2x"></i></a>
+            </div>
+            <p class=" small mb-0">&copy; 2026 Your Logo here Sargodha. Developed by OsaidIcon.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const menuToggle = document.getElementById('navbarNav');
+        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+        navLinks.forEach((l) => {
+            l.addEventListener('click', () => { if(menuToggle.classList.contains('show')){ bsCollapse.toggle(); } })
+        })
+    </script>
+    <script>
+    // Disable Right Click
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        alert("Protected Content: Right-click is disabled.");
+    });
+
+    // Disable Keyboard Shortcuts (F12, Ctrl+U, Ctrl+Shift+I, Ctrl+C)
+    document.onkeydown = function (e) {
+        if (event.keyCode == 123) { // F12
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+C
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
